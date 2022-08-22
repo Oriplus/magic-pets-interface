@@ -1,3 +1,4 @@
+import { AddIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -9,10 +10,22 @@ import {
   Image,
   Heading,
 } from "@chakra-ui/react";
+import NavLink from "../nav-link";
+import Wallet from "../wallet";
+
 
 const Navbar = () => {
-
-  return(
+  const Links = [
+    {
+      name: "Home",
+      to: "/",
+    },
+    {
+      name: "Pets",
+      to: "/pets",
+    },
+  ];
+  return (
     <Flex minH="100vh" direction="column">
       <Box
         mx="auto"
@@ -42,14 +55,26 @@ const Navbar = () => {
             <Flex alignItems="center">
               <Image src="./images/my-avatar-logo.png" width="80px" />
               <Heading size="md" color="purple" mt={0.2} ml={1}>
-                MagicPets
+                Pets
               </Heading>
             </Flex>
+            <HStack
+              as={"nav"}
+              spacing={4}
+              display={{ base: "none", md: "flex" }}
+            >
+              {Links.map(({ name, to }) => (
+                <NavLink key={name} to={to}>
+                  {name}
+                </NavLink>
+              ))}
+            </HStack>
           </HStack>
+          <Wallet />
         </Flex>
       </Box>
     </Flex>
   );
-}
+};
 
 export default Navbar;
