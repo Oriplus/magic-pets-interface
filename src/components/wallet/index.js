@@ -8,45 +8,73 @@ import {
   TagLabel,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
+import { connector } from "../../config/web3";
+import useTruncatedAddress from "../../hooks/useTruncatedAddress";
+
 
 const Wallet = () => {
-  const [isUnsupportedChain, setIsUnsupportedChain] = useState(true);
-  const [active, setActive] = useState(false);
+  const [balance, setBalance] = useState(0);
+  const { active, activate, deactivate, account, error, library } =
+    useWeb3React();
+
+  const isUnsupportedChain = error instanceof UnsupportedChainIdError;
+
+  const connect = useCallback(() => {
+    activate(connector);
+    localStorage.setItem("previouslyConnected", "true");
+  }, [activate]);
 
   const disconnect = () => {
-    console.log("disconnect");
+    deactivate();
+    localStorage.removeItem("previouslyConnected");
   };
-  const connect = () => {
-    console.log("connect");
-  };
+
+  const getBalance = useCallback(async () => {
+    const toSet = await library.eth.getBalance(account);
+    setBalance((toSet / 1e18).toFixed(2));
+  }, [library?.eth, account]);
+
+  useEffect(() => {
+    if (active) getBalance();
+  }, [active, getBalance]);
+
+  useEffect(() => {
+    if (localStorage.getItem("previouslyConnected") === "true") connect();
+  }, [connect]);
+
+  const truncatedAddress = useTruncatedAddress(account);
+
   return (
     <Flex alignItems={"center"}>
       {active ? (
-        <Tag colorScheme="green" borderRadius="full">
+        <Tag colorScheme="blue" borderRadius="full">
+          <TagLabel>
+            {truncatedAddress}
+          </TagLabel>
           <Badge
             d={{
               base: "none",
               md: "block",
             }}
             variant="solid"
-            fontSize="0.8rem"
+            fontSize="0.7rem"
             ml={1}
           >
-            ~1.22 Ξ
+            ~{balance} Ξ
           </Badge>
           <TagCloseButton onClick={disconnect} />
         </Tag>
       ) : (
         <Button
           variant={"solid"}
-          colorScheme={"green"}
+          colorScheme="blue"
           size={"sm"}
-          leftIcon={<AddIcon />}
           onClick={connect}
           disabled={isUnsupportedChain}
         >
-          Conectar wallet
+          {isUnsupportedChain ? "Unsupported chain" : "Connect"}
         </Button>
       )}
     </Flex>
