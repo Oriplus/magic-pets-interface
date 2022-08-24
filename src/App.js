@@ -1,12 +1,19 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/navbar'
+import Pets from './views/pets';
+import Layout from './layout';
+import Home from './views/home';
+import Mint from './views/mint';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/pets" element={<Pets />}/>
+        <Route path="/mint" element={<Mint />}/>
+      </Routes>
+    </Layout>
   );
 }
 
