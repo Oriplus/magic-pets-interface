@@ -7,6 +7,8 @@ import {
   useToast,
   Textarea,
   Text,
+  Flex,
+  Box,
 } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import createFileIPFS from "../../utils/createFileIPFS";
@@ -110,75 +112,82 @@ export default function HookForm() {
   if (!hasMinterAccess) return <MinterAccess />;
 
   return (
-    <form onSubmit={handleSubmit(uploadFile)}>
-      <FormControl>
-        <FormLabel htmlFor="name">Name</FormLabel>
-        <Input
-          id="name"
-          placeholder="Name"
-          {...register("name", {
-            required: "This is required",
-            minLength: { value: 2, message: "Minimum length should be 4" },
-          })}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {errors.name && (
-          <Text fontSize="sm" color="red">
-            {errors.name.message}
-          </Text>
-        )}
-        <FormLabel htmlFor="description">Description</FormLabel>
-        <Textarea
-          id="description"
-          placeholder="Description"
-          {...register("description", {
-            required: "This is required",
-          })}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        {errors.description && (
-          <Text fontSize="sm" color="red">
-            {errors.description.message}
-          </Text>
-        )}
-        <FormLabel htmlFor="type">Type</FormLabel>
+    <Box>
+      <form onSubmit={handleSubmit(uploadFile)}>
+        <FormControl>
+          <FormLabel htmlFor="name">Name</FormLabel>
+          <Input
+            id="name"
+            placeholder="Name"
+            {...register("name", {
+              required: "This is required",
+              minLength: { value: 2, message: "Minimum length should be 4" },
+            })}
+            onChange={(e) => setName(e.target.value)}
+          />
+          {errors.name && (
+            <Text fontSize="sm" color="red">
+              {errors.name.message}
+            </Text>
+          )}
+          <FormLabel htmlFor="description">Description</FormLabel>
+          <Textarea
+            id="description"
+            placeholder="Description"
+            {...register("description", {
+              required: "This is required",
+            })}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          {errors.description && (
+            <Text fontSize="sm" color="red">
+              {errors.description.message}
+            </Text>
+          )}
+          <FormLabel htmlFor="type">Type</FormLabel>
 
-        <Input
-          id="type"
-          placeholder="Type"
-          {...register("type", {
-            required: "This is required",
-            minLength: { value: 2, message: "Minimum length should be 2" },
-          })}
-          onChange={(e) => setValue1(e.target.value)}
-        />
-        {errors.type && (
-          <Text fontSize="sm" color="red">
-            {errors.type.message}
-          </Text>
-        )}
-        <FormLabel htmlFor="power">Power</FormLabel>
+          <Input
+            id="type"
+            placeholder="Type"
+            {...register("type", {
+              required: "This is required",
+              minLength: { value: 2, message: "Minimum length should be 2" },
+            })}
+            onChange={(e) => setValue1(e.target.value)}
+          />
+          {errors.type && (
+            <Text fontSize="sm" color="red">
+              {errors.type.message}
+            </Text>
+          )}
+          <FormLabel htmlFor="power">Power</FormLabel>
 
-        <Input
-          id="power"
-          placeholder="Power"
-          mb={"10px"}
-          {...register("power", {
-            required: "This is required",
-            minLength: { value: 2, message: "Minimum length should be 2" },
-          })}
-          onChange={(e) => setValue2(e.target.value)}
-        />
-        {errors.power && (
-          <Text fontSize="sm" color="red">
-            {errors.power.message}
-          </Text>
-        )}
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-      </FormControl>
-      <Button mt={4} colorScheme="blue" isLoading={isSubmitting} type="submit">
-        Submit
-      </Button>
-    </form>
+          <Input
+            id="power"
+            placeholder="Power"
+            mb={"10px"}
+            {...register("power", {
+              required: "This is required",
+              minLength: { value: 2, message: "Minimum length should be 2" },
+            })}
+            onChange={(e) => setValue2(e.target.value)}
+          />
+          {errors.power && (
+            <Text fontSize="sm" color="red">
+              {errors.power.message}
+            </Text>
+          )}
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        </FormControl>
+        <Button
+          mt={4}
+          colorScheme="blue"
+          isLoading={isSubmitting}
+          type="submit"
+        >
+          Submit
+        </Button>
+      </form>
+    </Box>
   );
 }
