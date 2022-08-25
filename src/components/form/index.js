@@ -29,7 +29,6 @@ export default function HookForm() {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
   const [hasMinterAccess, setHasMinterAccess] = useState(false);
-  console.log(image);
   const toast = useToast();
 
   const uploadFile = async () => {

@@ -14,7 +14,6 @@ const getMagicPetData = async ({ magicPetsContract, tokenId }) => {
   let { image } = metadata;
   image = ParseURL(image);
   metadata = { ...metadata, image };
-  console.log(metadata)
   return {
     tokenId,
     owner,
@@ -33,7 +32,6 @@ const useMagicPetsData = () => {
   const magicPetsContract = useMagicPetsContract();
 
   const update = useCallback(async () => {
-    console.log("aa");
     if (magicPetsContract) {
       setLoading(true);
       const totalSupply = await magicPetsContract.methods.totalSupply().call();
