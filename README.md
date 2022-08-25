@@ -8,6 +8,8 @@ This Project also has access control. Only people with access can mint.
 
 When the contract owner withdraws the funds, It will be sent to the foundation address.
 
+[Here](https://github.com/Oriplus/magic-pets) the contract repository.
+
 # Form for mint
 ![image](https://user-images.githubusercontent.com/42686893/186558490-14618d84-8e6c-4e49-9e87-035e88218f04.png)
 
