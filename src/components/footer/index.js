@@ -6,7 +6,11 @@ import {
   Link,
   useColorModeValue,
   Center,
+  Flex,
 } from "@chakra-ui/react";
+import Github from "../icons/github";
+import LinkedIn from "../icons/linkedin";
+import Twitter from "../icons/twitter";
 
 const Footer = () => {
   return (
@@ -28,14 +32,26 @@ const Footer = () => {
           justify={{ base: "center", md: "space-between" }}
           align={{ base: "center", md: "center" }}
         >
-          <Center w={'full'}>
-
-          <Text>
-            © {new Date().getFullYear()} with 💚 by
-            <Link ml={1} href="https://twitter.com/Oriplus_">
-              Oriplus
-            </Link>
-          </Text>
+          <Center w={"full"}>
+            <Flex direction={"column"}>
+              <Text>
+                © {new Date().getFullYear()} with 💚 by
+                <Link ml={1} href="https://twitter.com/Oriplus_">
+                  Oriplus
+                </Link>
+              </Text>
+              <Flex direction={"row"} justify={"center"}>
+                <Link ml={1} href="https://github.com/Oriplus">
+                  <Github />
+                </Link>
+                <Link ml={1} href="https://twitter.com/Oriplus_">
+                  <Twitter />
+                </Link>
+                <Link ml={1} href="https://www.linkedin.com/in/oriana-morillo/">
+                  <LinkedIn />
+                </Link>
+              </Flex>
+            </Flex>
           </Center>
         </Container>
       </Box>
