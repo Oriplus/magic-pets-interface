@@ -35,7 +35,7 @@ const Footer = () => {
           <Center w={"full"}>
             <Flex direction={"column"}>
               <Text>
-                © {new Date().getFullYear()} with 💚 by
+                © {new Date().getFullYear()} Made with 💚 by
                 <Link ml={1} href="https://twitter.com/Oriplus_">
                   Oriplus
                 </Link>

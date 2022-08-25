@@ -9,8 +9,8 @@ const getMagicPetData = async ({ magicPetsContract, tokenId }) => {
   const { onSale } = await magicPetsContract.methods.Pets(tokenId).call();
   const  owner = await magicPetsContract.methods.ownerOf(tokenId).call();
   const price = (priceToSet / 1e18).toFixed(3);
-  const responseMetada = await fetch(tokenURI);
-  let metadata = await responseMetada.json();
+  const responseMetadata = await fetch(ParseURL(tokenURI));
+  let metadata = await responseMetadata.json();
   let { image } = metadata;
   image = ParseURL(image);
   metadata = { ...metadata, image };

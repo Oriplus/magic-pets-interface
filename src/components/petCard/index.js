@@ -14,7 +14,18 @@ import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
 import useMagicPetsContract from "../../hooks/useMagicPetsContract";
 
-const PetCard = ({ name, description, image, tokenId, price, onSale, priceToSet, update, owner, attributes }) => {
+const PetCard = ({
+  name,
+  description,
+  image,
+  tokenId,
+  price,
+  onSale,
+  priceToSet,
+  update,
+  owner,
+  attributes,
+}) => {
   const { account } = useWeb3React();
   const magicPetsContract = useMagicPetsContract();
   const toast = useToast();
@@ -26,7 +37,7 @@ const PetCard = ({ name, description, image, tokenId, price, onSale, priceToSet,
       .buy(tokenId)
       .send({
         from: account,
-        value: priceToSet
+        value: priceToSet,
       })
       .on("error", () => {
         setBuying(false);
@@ -42,11 +53,11 @@ const PetCard = ({ name, description, image, tokenId, price, onSale, priceToSet,
         setBuying(false);
         toast({
           title: "Success",
-          description: "See you Pet on OpenSea",
+          description: "You can see you Pet on OpenSea",
           status: "success",
         });
+        update();
       });
-      update()
   };
 
   return (
@@ -69,18 +80,6 @@ const PetCard = ({ name, description, image, tokenId, price, onSale, priceToSet,
         rounded={"lg"}
         pos={"relative"}
         height={"250px"}
-        _after={{
-          transition: "all .3s ease",
-          content: '""',
-          w: "full",
-          h: "full",
-          pos: "absolute",
-          top: 0,
-          left: 0,
-          backgroundImage: `url(${image})`,
-          filter: "blur(15px)",
-          zIndex: -1,
-        }}
         _groupHover={{
           _after: {
             filter: "blur(20px)",
@@ -103,27 +102,31 @@ const PetCard = ({ name, description, image, tokenId, price, onSale, priceToSet,
           {description}
         </Text>
         <Text fontSize="md" fontFamily={"body"}>
-          Type: {(attributes.length > 1)? attributes[0].value : 'None'}
+          Type: {attributes.length > 1 ? attributes[0].value : "None"}
         </Text>
         <Text fontSize="md" fontFamily={"body"}>
-          Power: {(attributes.length > 1)? attributes[1].value : 'None'}
+          Power: {attributes.length > 1 ? attributes[1].value : "None"}
         </Text>
         {onSale ? (
-          <Flex justify={'space-around'}>
-          <Center>
-            <Text fontSize="md" fontFamily={"body"} mr={'15px'}>
-            {price} Eth
-            </Text>
-          </Center>
-          <Button isLoading={buying} onClick={buyPet} colorScheme="blue">
-            Buy
-          </Button>
+          <Flex justify={"space-around"}>
+            <Center>
+              <Text fontSize="md" fontFamily={"body"} mr={"15px"}>
+                {price} Eth
+              </Text>
+            </Center>
+            <Button isLoading={buying} onClick={buyPet} colorScheme="blue">
+              Buy
+            </Button>
           </Flex>
         ) : (
           <Button disabled={true}>Sold</Button>
-        )
-      }
-      {(owner === account) && <Text fontSize="sm" fontFamily={"body"}> You own this Pet</Text>}
+        )}
+        {owner === account && (
+          <Text fontSize="sm" fontFamily={"body"}>
+            {" "}
+            You own this Pet
+          </Text>
+        )}
       </Stack>
     </Box>
   );
