@@ -5,7 +5,7 @@ const Home = () => {
     <Stack
       align={"center"}
       spacing={{ base: 8, md: 10 }}
-      py={{ base: 20, md: 28 }}
+      py={{ base: 20, md: 12 }}
       direction={{ base: "column-reverse", md: "row" }}
     >
       <Stack flex={1} spacing={{ base: 5, md: 10 }}>
@@ -28,7 +28,7 @@ const Home = () => {
           ✨
         </Heading>
         <Text color={"gray.500"} fontSize={"xl"}>
-          Magic Pets is a collection of NFTs to raise funds for an animal
+          Magic Pets is a collection of Dynamic NFTs to raise funds for an animal
           foundation.
         </Text>
         <Text color={"#845ec2"} fontSize={"xl"}>

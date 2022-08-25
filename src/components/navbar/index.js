@@ -26,6 +26,10 @@ const Navbar = () => {
       name: "Mint",
       to: "/mint",
     },
+    {
+      name: "About",
+      to: "/about",
+    },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
 
