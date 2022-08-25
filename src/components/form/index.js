@@ -7,7 +7,6 @@ import {
   useToast,
   Textarea,
   Text,
-  Flex,
   Box,
 } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";

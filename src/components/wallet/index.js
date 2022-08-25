@@ -2,17 +2,14 @@ import {
   Badge,
   Button,
   Flex,
-  Link,
   Tag,
   TagCloseButton,
   TagLabel,
 } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
 import { useCallback, useEffect, useState } from "react";
 import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
 import { connector } from "../../config/web3";
 import useTruncatedAddress from "../../hooks/useTruncatedAddress";
-
 
 const Wallet = () => {
   const [balance, setBalance] = useState(0);
@@ -50,9 +47,7 @@ const Wallet = () => {
     <Flex alignItems={"center"}>
       {active ? (
         <Tag colorScheme="blue" borderRadius="full">
-          <TagLabel>
-            {truncatedAddress}
-          </TagLabel>
+          <TagLabel>{truncatedAddress}</TagLabel>
           <Badge
             d={{
               base: "none",

@@ -1,5 +1,4 @@
-import { Flex, Text, Heading, Stack } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Text, Heading, Stack } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const MinterAccess = () => {
@@ -16,11 +15,7 @@ const MinterAccess = () => {
           fontWeight={600}
           fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
         >
-          <Text
-            as={"span"}
-            position={"relative"}
-            color={"#845ec2"}
-          >
+          <Text as={"span"} position={"relative"} color={"#845ec2"}>
             Want to mint?
           </Text>
           <br />
@@ -28,8 +23,12 @@ const MinterAccess = () => {
         <Text color={"gray.500"}>
           Only people with access can mint. If you want to mint your Magic Pet
           just ask for access &nbsp;
-           <a href="https://twitter.com/Oriplus_" target="_blank" rel="noreferrer">
-             @Oriplus_
+          <a
+            href="https://twitter.com/Oriplus_"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @Oriplus_
             <ExternalLinkIcon mx="2px" />
           </a>
         </Text>
