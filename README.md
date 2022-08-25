@@ -8,6 +8,8 @@ This Project also has access control. Only people with access can mint.
 
 When the contract owner withdraws the funds, It will be sent to the foundation address.
 
+Visit [Magic Pets](https://wispy-bar-9298.on.fleek.co/)
+
 [Here](https://github.com/Oriplus/magic-pets) the contract repository.
 
 # Form for mint
