@@ -6,7 +6,7 @@ At first, it is an egg that will change into an animal when purchased.
 
 Data is stored using an IPFS.
 
-This project also has access control. If a person wants to be part of the project and mint, they have to request access to it.
+This project also has access control. If a person wants to be part of the project and want to mint, they have to request access to it.
 
 When the contract owner withdraws the funds, It will be sent to the foundation address.
 
