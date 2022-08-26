@@ -1,10 +1,12 @@
 # Magic Pets
 
-Magic Pets is a collection of Dynamic NFTs to raise funds. The
-contract owns the NFT once minted. At first, it is an egg that will
-change into an animal when purchased. o store data it is using an IPFS.
+Magic Pets is a collection of Dynamic NFTs to raise funds and learn about the abilities that an animal have in real life. Once the NFT is created, it will belong to the contract so that it is not centralized in the person who minted it. 
 
-This Project also has access control. Only people with access can mint.
+At first, it is an egg that will change into an animal when purchased. 
+
+Data is stored using an IPFS.
+
+This project also has access control. If a person wants to be part of the project and mint, they have to request access to it.
 
 When the contract owner withdraws the funds, It will be sent to the foundation address.
 
